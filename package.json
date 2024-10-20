@@ -1,0 +1,36 @@
+{
+  "name": "traveller",
+  "version": "1.0.0",
+  "description": "A full-stack travel planning web application.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "travel",
+    "travelling",
+    "traveller",
+    "flights",
+    "holiday",
+    "destination",
+    "vacation",
+    "booking",
+    "aviation",
+    "airplane",
+    "aircraft"
+  ],
+  "author": "coding-z",
+  "dependencies": {
+    "@types/node": "^22.7.7",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  }
+}
