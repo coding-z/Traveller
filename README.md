@@ -9,11 +9,11 @@ A full-stack travel planning web application.
 - React
 - TypeScript
 - Chakra UI
+- Next.js
 
 ### Backend
 
 - Firebase
-- Next.js
 
 ### APIs
 
