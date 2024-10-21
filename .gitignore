@@ -131,3 +131,6 @@ dist
 
 # Firebase
 firebase
+.firebase
+.firebaserc
+firebase.json
