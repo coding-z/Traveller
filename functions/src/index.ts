@@ -25,7 +25,7 @@ const amadeusApiKey = defineSecret("AMADEUS_API_KEY");
 const amadeusApiSecret = defineSecret("AMADEUS_API_SECRET");
 
 export const getFlights = onRequest(
-  {secrets: [amadeusApiKey, amadeusApiSecret]},
+  {cors: true, secrets: [amadeusApiKey, amadeusApiSecret]},
   (request, response) => {
     const amadeus = new Amadeus({
       clientId: amadeusApiKey.value(),

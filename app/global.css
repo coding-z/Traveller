@@ -6,11 +6,15 @@ html {
   box-sizing: inherit;
 }
 
-body {
+/* Select with element and id to increase specificity */
+body#body {
   margin: 0;
+  padding: 0;
   display: block flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  max-width: 100vw;
+  width: 100vw;
 }

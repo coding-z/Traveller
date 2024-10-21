@@ -1,6 +1,7 @@
 import { Card, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { FlightDestinationsResult } from "amadeus-ts";
 
-export default function FlightTable() {
+export default function FlightTable({ result }: { result: FlightDestinationsResult }) {
   return (
     <Card>
       <TableContainer>
@@ -14,12 +15,17 @@ export default function FlightTable() {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>somewhere</Td>
-              <Td>somewhere else</Td>
-              <Td>now</Td>
-              <Td>expensive</Td>
-            </Tr>
+            {
+              result &&
+              result.data.map((flight) => (
+                <Tr key={flight.origin + flight.destination}>
+                  <Td>{flight.origin}</Td>
+                  <Td>{flight.destination}</Td>
+                  <Td>{flight.departureDate}</Td>
+                  <Td>{flight.price.total}</Td>
+                </Tr>
+              ))
+            }
           </Tbody>
         </Table>
       </TableContainer>
