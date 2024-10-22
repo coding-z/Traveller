@@ -2,19 +2,10 @@
 
 A full-stack travel planning web application.
 
-## Technology Stack
+## Features
 
-### Frontend
+### Flights
 
-- React
-- TypeScript
-- Chakra UI
-- Next.js
-
-### Backend
-
-- Firebase
-
-### APIs
-
-- Amadeus
+- Can search for cheapest flights for a given origin and destination
+- Search for flights on a given date
+- View upcoming cheapest / popular / recent flights between any locations

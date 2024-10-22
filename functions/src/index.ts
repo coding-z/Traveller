@@ -24,23 +24,33 @@ import {defineSecret} from "firebase-functions/params";
 const amadeusApiKey = defineSecret("AMADEUS_API_KEY");
 const amadeusApiSecret = defineSecret("AMADEUS_API_SECRET");
 
-export const getFlights = onRequest(
+export const getCheapestFlights = onRequest(
   {cors: true, secrets: [amadeusApiKey, amadeusApiSecret]},
   (request, response) => {
-    const amadeus = new Amadeus({
-      clientId: amadeusApiKey.value(),
-      clientSecret: amadeusApiSecret.value(),
-    });
-
-    amadeus.shopping.flightDestinations
-      .get({
-        origin: "MAD",
-      })
-      .then((apiResponse) => {
-        response.json(apiResponse.result);
-      })
-      .catch((error) => {
-        response.send(error);
+    if (
+      request.query.origin === undefined ||
+      request.query.destination === undefined
+    ) {
+      response
+        .status(400)
+        .send("Must supply origin and destination parameters");
+    } else {
+      const amadeus = new Amadeus({
+        clientId: amadeusApiKey.value(),
+        clientSecret: amadeusApiSecret.value(),
       });
+
+      amadeus.shopping.flightDates
+        .get({
+          origin: request.query.origin.toString(),
+          destination: request.query.destination.toString(),
+        })
+        .then((apiResponse) => {
+          response.status(200).json(apiResponse.result);
+        })
+        .catch((error) => {
+          response.status(500).send(error);
+        });
+    }
   }
 );
