@@ -18,7 +18,7 @@ import {onRequest} from "firebase-functions/v2/https";
 //   response.send("Hello from Firebase!");
 // });
 
-import Amadeus from "amadeus-ts";
+// import Amadeus from "amadeus-ts";
 import {defineSecret} from "firebase-functions/params";
 
 const amadeusApiKey = defineSecret("AMADEUS_API_KEY");
@@ -27,30 +27,31 @@ const amadeusApiSecret = defineSecret("AMADEUS_API_SECRET");
 export const getCheapestFlights = onRequest(
   {cors: true, secrets: [amadeusApiKey, amadeusApiSecret]},
   (request, response) => {
-    if (
-      request.query.origin === undefined ||
-      request.query.destination === undefined
-    ) {
-      response
-        .status(400)
-        .send("Must supply origin and destination parameters");
-    } else {
-      const amadeus = new Amadeus({
-        clientId: amadeusApiKey.value(),
-        clientSecret: amadeusApiSecret.value(),
-      });
+    response.status(200).send("Function working");
+    // if (
+    //   request.query.origin === undefined ||
+    //   request.query.destination === undefined
+    // ) {
+    //   response
+    //     .status(400)
+    //     .send("Must supply origin and destination parameters");
+    // } else {
+    //   const amadeus = new Amadeus({
+    //     clientId: amadeusApiKey.value(),
+    //     clientSecret: amadeusApiSecret.value(),
+    //   });
 
-      amadeus.shopping.flightDates
-        .get({
-          origin: request.query.origin.toString(),
-          destination: request.query.destination.toString(),
-        })
-        .then((apiResponse) => {
-          response.status(200).json(apiResponse.result);
-        })
-        .catch((error) => {
-          response.status(500).send(error.code);
-        });
-    }
+    //   amadeus.shopping.flightDates
+    //     .get({
+    //       origin: request.query.origin.toString(),
+    //       destination: request.query.destination.toString(),
+    //     })
+    //     .then((apiResponse) => {
+    //       response.status(200).json(apiResponse.result);
+    //     })
+    //     .catch((error) => {
+    //       response.status(500).send(error.code);
+    //     });
+    // }
   }
 );
