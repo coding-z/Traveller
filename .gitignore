@@ -134,3 +134,4 @@ firebase
 .firebase
 .firebaserc
 firebase.json
+.runtimeconfig.json
