@@ -49,7 +49,7 @@ export const getCheapestFlights = onRequest(
           response.status(200).json(apiResponse.result);
         })
         .catch((error) => {
-          response.status(500).send(error);
+          response.status(500).send(error.code);
         });
     }
   }

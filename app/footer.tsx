@@ -1,18 +1,17 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
-export default function Header() {
+export default function Footer() {
   return (
     <Flex
-      bgColor="blue.600"
+      bgColor="gray.500"
       w="full"
       minH={16}
       direction="row"
       justify="center"
       align="center"
-      boxShadow="md"
     >
-      <Heading color="white" size="lg">
-        Traveller
+      <Heading color="white" size="md">
+        Footer
       </Heading>
     </Flex>
   );
